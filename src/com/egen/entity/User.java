@@ -1,10 +1,12 @@
 package com.egen.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class User {
@@ -14,11 +16,10 @@ public class User {
 	private String fname;
 	private String lname;
 	private String age;
-
 	private String email;
-	@JsonIgnore
 	private String password;
-
+    private List<String> movieList;
+	
 	public String getPassword() {
 		return password;
 	}
@@ -54,6 +55,13 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public List<String> getMovie() {
+		return movieList;
+	}
+	public void setMovie(String movieTitle) {
+		movieList.add(movieTitle);
+		
 	}
 
 }

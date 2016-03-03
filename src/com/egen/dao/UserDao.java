@@ -52,4 +52,11 @@ public class UserDao {
 		return user;
 	}
 	
+	public List<String> addMoviestoWishList(User user,String MovieTitle ){
+	
+		user.setMovie(MovieTitle);
+		
+    return user.getMovie();
+	}
+	
 }

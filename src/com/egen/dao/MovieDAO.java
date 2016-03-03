@@ -26,10 +26,10 @@ public class MovieDAO {
 		 return movielist;
 	}
 	
-	public Movie  findOneMovie(String id )
+	public Movie  findOneMovie(String Title )
 	{
 
-		return entityManager.find(Movie.class, id);
+		return entityManager.find(Movie.class, Title);
 	
 	}
 	
@@ -46,10 +46,10 @@ public class MovieDAO {
 	}
 	
 	
-	public Movie delete(String id ) 
+	public Movie delete(String Title ) 
 	{
-		Movie movie =  entityManager.find(Movie.class, id);
-		entityManager.remove(id);
+		Movie movie =  entityManager.find(Movie.class, Title);
+		entityManager.remove(Title);
 		return movie;
 	}
 
