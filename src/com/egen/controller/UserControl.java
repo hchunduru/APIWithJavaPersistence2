@@ -1,4 +1,4 @@
-package com.egen.controller;
+ package com.egen.controller;
 
 import java.util.List;
 
@@ -27,24 +27,31 @@ public class UserControl {
 	{
 		return service.findAll();
 	}
-	@RequestMapping(value = "{id}" ,method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public User  findOne(@PathVariable("id") String id ) throws UserNotFoundException 
+	@RequestMapping(value = "{Title}" ,method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public User  findOne(@PathVariable("Title") String Title ) throws UserNotFoundException 
 	{
-		return service.findOne(id);
+		return service.findOne(Title);
 	}
 	@RequestMapping(method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public User create(@RequestBody User user) throws BadRequestByUser
 	{
 		return service.createUser(user);
 	}
-	@RequestMapping(value = "{id}" , method=RequestMethod.PUT,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User update(@PathVariable("id") String id ,@RequestBody User user) throws UserNotFoundException
+	@RequestMapping(value = "{Title}" , method=RequestMethod.PUT,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public User update(@PathVariable("Title") String Title ,@RequestBody User user) throws UserNotFoundException
 	{
-		return service.update(id, user);
+		return service.update(Title, user);
 	}
-	@RequestMapping(value = "{id}" , method=RequestMethod.DELETE,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User delete(@PathVariable("id") String id ) throws UserNotFoundException
+	@RequestMapping(value = "{Title}" , method=RequestMethod.DELETE,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public User delete(@PathVariable("Title") String Title ) throws UserNotFoundException
 	{
-		return service.delete(id);
+		return service.delete(Title);
+		
 	}
-}
+	@RequestMapping(value = "{Title}" , method=RequestMethod.PUT,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public User wishlist(@PathVariable("Title") String Title ,@RequestBody User user) throws UserNotFoundException
+	{
+		return service.wishList(user, Title);
+	}
+	
+	}

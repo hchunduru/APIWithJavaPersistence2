@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.egen.dao.UserDao;
+import com.egen.entity.Movie;
 import com.egen.entity.User;
 import com.egen.exceptionHandlers.BadRequestByUser;
 import com.egen.exceptionHandlers.UserNotFoundException;
+
 
 @Service
 public class UserService {	
@@ -27,9 +29,9 @@ public class UserService {
 		 return user;
 	}
 	
-	public User  findOne(String id ) throws UserNotFoundException 
+	public User  findOne(String Title ) throws UserNotFoundException 
 	{
-		User user = userDAO.findOne(id);
+		User user = userDAO.findOne(Title);
 		if(user != null)
 		{
 			return user;
@@ -78,5 +80,21 @@ public class UserService {
 		{
 			throw new UserNotFoundException();
 		}
+		
 	}
+	
+	public User wishList(User user,String Title ) throws UserNotFoundException{
+	
+	    List<String> movieWishlist=	userDAO.addMoviestoWishList(user, Title);
+		
+		if(user.getMovie() != movieWishlist)
+		{
+			return user;
+		}
+		else
+		{
+			throw new UserNotFoundException();
+		}
+	}
+	
 }

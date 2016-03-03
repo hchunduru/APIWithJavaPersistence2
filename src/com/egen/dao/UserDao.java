@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.egen.entity.Movie;
 import com.egen.entity.User;
 
 
@@ -27,9 +28,9 @@ public class UserDao {
 		 return userslist;
 	}
 	
-	public User  findOne(String id )  
+	public User  findOne(String Title )  
 	{
-		return entityManager.find(User.class, id);
+		return entityManager.find(User.class, Title);
 	}
 	
 	public User createUser(User user) 
@@ -45,16 +46,16 @@ public class UserDao {
 		
 		return entityManager.merge(user);
 	}
-	public User delete(String id ) 
+	public User delete(String Title ) 
 	{
-		User user =  entityManager.find(User.class, id);
-		entityManager.remove(id);
+		User user =  entityManager.find(User.class, Title);
+		entityManager.remove(Title);
 		return user;
 	}
 	
-	public List<String> addMoviestoWishList(User user,String MovieTitle ){
+	public List<String> addMoviestoWishList(User user,String title ){
 	
-		user.setMovie(MovieTitle);
+		user.setMovie(title);
 		
     return user.getMovie();
 	}

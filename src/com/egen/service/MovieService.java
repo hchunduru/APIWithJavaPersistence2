@@ -24,9 +24,9 @@ public class MovieService {
 		return movies;
 	}
 	
-	public Movie  findOneMovie(String id ) throws  MovieNotFoundException
+	public Movie  findOneMovie(String Title ) throws  MovieNotFoundException
 	{
-		Movie movie = movieDAO.findOneMovie(id);
+		Movie movie = movieDAO.findOneMovie(Title);
 		if(movie != null)
 		{
 			return movie;
@@ -39,8 +39,8 @@ public class MovieService {
 	
 	public Movie createMovie(Movie movie) throws BadRequestOnMovie
 	{
-		movie.setmId(movie.hashCode()+"");
-		if(movie.getmLength().matches(validateLength))
+		
+		if(movie!=null)
 		{
 			
 			movieDAO.createMovie(movie);
@@ -67,12 +67,12 @@ public class MovieService {
 	}
 	
 	
-	public Movie delete(String id ) throws MovieNotFoundException
+	public Movie delete(String Title ) throws MovieNotFoundException
 	{
-		Movie movie1 = movieDAO.findOneMovie(id);
+		Movie movie1 = movieDAO.findOneMovie(Title);
 		if(movie1 != null)
 		{
-			return movieDAO.delete(id);
+			return movieDAO.delete(Title);
 		}
 		else
 		{
